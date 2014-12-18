@@ -126,6 +126,7 @@
       counter+=this.get(i)[colIndex];
     }
 
+    // toggling between 0 and 1 right now
     return counter > 1;
     },
 
