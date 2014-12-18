@@ -126,7 +126,7 @@
       counter+=this.get(i)[colIndex];
     }
 
-    return counter > 1; // fixme
+    return counter > 1;
     },
 
     // test if any columns on this board contain conflicts

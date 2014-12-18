@@ -21,6 +21,7 @@ window.findNRooksSolution = function(n) {
   // declare variable colIndex, will start at 0, tracks column index
   var colIndex = 0;
   // inner function for recursion, argument is colIndex
+
   var createRook = function(column){
     if(colIndex === size){
       return;
@@ -28,18 +29,20 @@ window.findNRooksSolution = function(n) {
     // for loop on size
     for(var i = 0; i < size; i++){
       //start with if statement, will have a condition of 'if(no row or column conflict)'
+      /*console.log(!solution.hasRowConflictAt(i));*/
+      console.log('column :',!solution.hasColConflictAt(colIndex));
+      console.log('row :',!solution.hasRowConflictAt(i));
       if(!solution.hasRowConflictAt(i) && !solution.hasColConflictAt(colIndex)){
         //push 1 into matrix slot.  solution.atrribute[i][colIndex] = 1;
         solution.attributes[i][colIndex] = 1;
       }
 
     }
-    console.log(colIndex)
-    createRook(colIndex + 1);
+    colIndex++;
+    createRook(colIndex);
   }
 
   createRook(colIndex);
-
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
