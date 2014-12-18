@@ -153,7 +153,27 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+      // get size in variable
+      var size = this.get('n');
+      // counter variable at 0
+      var counter = 0;
+      // col index = input
+      var colIndex = majorDiagonalColumnIndexAtFirstRow;
+
+      // for loop on size
+      for (var i = 0; i < size; i++) {
+        // if col = n - 1
+        if (colIndex === size - 1 || colIndex < 0) {
+          break;
+        }
+
+        counter+=this.get(i)[colIndex];
+        colIndex++;
+        console.log('array :', i);
+        console.log('column :', colIndex);
+      }
+
+      return counter > 1;
     },
 
     // test if any major diagonals on this board contain conflicts
