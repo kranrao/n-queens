@@ -99,10 +99,8 @@
       var size = this.get('n');
       // create a for loop for size
       for(var i = 0; i < size; i++){
-        // run hasRowConflictAt on 'i'
-        //if(hasRowConflictAt on 'i')
+        // check if row conflict exists
         if(this.hasRowConflictAt(i)){
-          // return true
           return true;
         }
 
@@ -118,12 +116,34 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      return false; // fixme
+    /*console.log(colIndex);*/
+    // declare variable size that is equal to 'this.get('n')'
+    var size = this.get('n');
+    // declare counter, make 0
+    var counter = 0;
+    //create a for loop on the size
+    for(var i = 0; i < size; i++){
+      //counter += this.get on i to get rows, get the first value of each row
+      counter+=this.get(i)[colIndex];
+    }
+
+    return counter > 1; // fixme
     },
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      return false; // fixme
+      // declare size variable for this.get('n')
+      var size = this.get('n');
+
+      // create for loop on size
+      for (var i = 0; i < size; i++) {
+        // if hasColConflictAt(i)
+        if (this.hasColConflictAt(i)) {
+          return true;
+        }
+      }
+
+      return false
     },
 
 
