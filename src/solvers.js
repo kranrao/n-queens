@@ -47,7 +47,7 @@ window.findNRooksSolution = function(n) {
   createRook(colIndex);
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
-  return solution
+  return solution.rows();
 };
 
 
