@@ -169,8 +169,6 @@
 
         counter+=this.get(i)[colIndex];
         colIndex++;
-        console.log('array :', i);
-        console.log('column :', colIndex);
       }
 
       return counter > 1;
@@ -178,7 +176,18 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      return false; // fixme
+      // declare size variable for this.get('n')
+      var size = this.get('n');
+
+      // create for loop on size
+      for (var i = 0; i < size; i++) {
+        // if hasColConflictAt(i)
+        if (this.hasMajorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+
+      return false;
     },
 
 
@@ -188,12 +197,41 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      return false; // fixme
+            // get size in variable
+      var size = this.get('n');
+      // counter variable at 0
+      var counter = 0;
+      // col index = input
+      var colIndex = minorDiagonalColumnIndexAtFirstRow;
+
+      // for loop on size
+      for (var i = 0; i < size; i++) {
+        // if col = n - 1
+        if (colIndex < 0 || colIndex > size - 1) {
+          break;
+        }
+
+        counter+=this.get(i)[colIndex];
+        colIndex--;
+        //console.log('array :', i, 'column :', colIndex, 'counter :', counter);
+      }
+
+      return counter > 1;
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      // declare size variable for this.get('n')
+      var size = this.get('n');
+
+      // create for loop on size
+      for (var i = size - 1; i > 0; i--) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
