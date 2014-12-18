@@ -80,7 +80,6 @@
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
       // set up counter to count whether any data in row
-
       var counter = 0;
       // set up row variable to get array
       var row = this.get(rowIndex);
