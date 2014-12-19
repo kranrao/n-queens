@@ -109,9 +109,14 @@ window.findNQueensSolution = function(n) {
     }
   };
 
-  // make edge case for 0 and 2
-
-  solution = findSolutions(0);
+  // 2 and 3 are edge cases, refactor code later
+  if (n === 2) {
+    solution = [[0,0],[0,0]];
+  } else if (n === 3) {
+    solution = [[0,0,0],[0,0,0],[0,0,0]];
+  } else {
+    solution = findSolutions(0);
+  }
 
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
