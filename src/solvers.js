@@ -14,7 +14,31 @@
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
 window.findNRooksSolution = function(n) {
-  var solution = undefined;
+  var solution;
+    // initialize a new board
+  var board = new Board({n:n});
+  // recursive function that finds solutions
+  var findSolutions = function(row){
+    // base case
+    // when row is equal to n
+    if(row === n){
+      return board.rows();
+    }
+
+    // set up for loop
+    for(var i = 0; i < n; i++){
+      // put toggle on
+      board.togglePiece(row, i);
+      // check if conflict
+      if(!board.hasAnyRooksConflicts()){
+        return findSolutions(row+1);
+      }
+      // toggle off
+      board.togglePiece(row, i);
+    }
+  };
+
+  solution = findSolutions(0);
 
   console.log('Single solution for ' + n + ' rooks:', JSON.stringify(solution));
   return solution;
@@ -48,7 +72,7 @@ window.countNRooksSolutions = function(n) {
       // toggle off
       board.togglePiece(row, i);
     }
-  }
+  };
 
   // invoke recursive solution on row
   findSolutions(0);
@@ -61,7 +85,33 @@ window.countNRooksSolutions = function(n) {
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
-  var solution = undefined; //fixme
+  var solution;
+  // initialize a new board
+  var board = new Board({n:n});
+  // recursive function that finds solutions
+  var findSolutions = function(row){
+    // base case
+    // when row is equal to n
+    if(row === n){
+      return board.rows();
+    }
+
+    // set up for loop
+    for(var i = 0; i < n; i++){
+      // put toggle on
+      board.togglePiece(row, i);
+      // check if conflict
+      if(!board.hasAnyQueensConflicts()){
+        return findSolutions(row+1);
+      }
+      // toggle off
+      board.togglePiece(row, i);
+    }
+  };
+
+  // make edge case for 0 and 2
+
+  solution = findSolutions(0);
 
   console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
