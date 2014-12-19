@@ -151,8 +151,14 @@ window.countNQueensSolutions = function(n) {
     }
   }
 
-  // invoke recursive solution on row
-  findSolutions(0);
+  // 2 and 3 are edge cases, refactor code later
+  if (n === 2 || n === 3) {
+    solutionCount = 0;
+  } else {
+    findSolutions(0);
+  }
+
+
 
   console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;

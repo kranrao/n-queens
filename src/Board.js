@@ -157,18 +157,20 @@
       var size = this.get('n');
       // counter variable at 0
       var counter = 0;
-      // col index = input
-      var colIndex = majorDiagonalColumnIndexAtFirstRow;
+      var regValue = majorDiagonalColumnIndexAtFirstRow
+      var negColIndex = size - (size+size);
 
       // for loop on size
-      for (var i = 0; i < size; i++) {
+      for (var i = negColIndex; i < size; i++) {
         // if col = n - 1
-        if (colIndex === size - 1 || colIndex < 0) {
+        if (negColIndex === size) {
           break;
         }
 
-        counter+=this.get(i)[colIndex];
-        colIndex++;
+        if(!!this.get(i)[negColIndex]){
+        counter+=this.get(i)[negColIndex];
+        }
+        negColIndex++;
       }
 
       return counter > 1;
